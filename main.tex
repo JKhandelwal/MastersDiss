@@ -1,14 +1,82 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[a4paper]{article}
 
-\title{MastersDiss}
-\author{jalaj }
-\date{June 2020}
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
 
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{filecontents}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{epsfig}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{bashful}
+\usepackage{array}
+\usepackage{url}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[title]{appendix}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5em}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\title{A thesis exploring random crap Jalaj can put together in 2 months}
+\author{}
+\date{}
+%\setcounter{secnumdepth}{-2}
 \begin{document}
-
-\maketitle
-
+	
+	\begin{titlepage}
+		\vspace{\fill}
+		\maketitle
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.4\textwidth]{Images/SchoolLogo.png}
+		\end{figure}
+		\begin{center}
+			\Large\textbf{University of St Andrews}\\
+			\vspace{1cm}
+			\Large\textbf{School of Mathematics and Statistics}
+		\end{center}
+		
+		\vspace{\fill}
+		\Large%\textbf{Details}
+		\begin{itemize}
+			\renewcommand\labelitemi{--}
+			\item[] \textbf{Supervisor}: Dr Carl Donovan  
+			\item[] \textbf{Module}: MT5099 Masters Dissertation in Partial Fulfillment of the MSc. in Data Intensive Analysis
+			\item[] \textbf{Date}: \today
+		\end{itemize}
+		\vspace{\fill}
+	\end{titlepage}
 \section{Introduction}
-This is my dissertation
+This is my dissertation *dabs*
+\include{Prior}
+\include{gdelt}
+\include{Topic}
+\include{Scope}
+\include{Modelling}
+\include{Experiments}
+\bibliographystyle{acm}
+\bibliography{ref}
 \end{document}

@@ -1,0 +1,13 @@
+\section{GDELT}
+
+The Global Database for Events Language and Tone was the basis for this dissertation. This is a database which stores a record of every broad cast, print, and web news published since 1979, in over 100 languages from all parts of the world. It contains over a quarter of a billion georeferenced records. 
+
+The records are stored across multiple tables accessible either directly, or through Google Big Query. The main table which was the source of the data in this dissertation was the Events table. This listed each 
+
+the main table used for the prototyping is the events table, this is composed of several bits. 
+
+The interesting part of the events table is the source URL, the Average Tone and the Goldstein Scale. This dissertation and prototyping works on the basis of the headline if it is present in the source URL. The reason for this is that it would be infeasible to retrieve each article and process the documentation, as each article and site would have a completely different html structure, and automating the parsing would be almost impossible. Furthermore, some articles may be beyond paywalls, which would be difficult to reach with conventional web scraping methods such as wget.
+
+The Average Tone of the articles is measured as how positive or negative the article is. It is calculated and stored in the GDELT events table, for each article present.
+
+The Goldstein scale is the main geopolitical measure used, this ranks how important the article/contents of the article are objectively. This is on a scale of negative to positive, where negative is this is a negative thing, and positive is a positive thing.

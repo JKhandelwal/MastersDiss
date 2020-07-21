@@ -1,0 +1,17 @@
+\section{Experiments}
+
+\subsection{Topic Modelling}
+
+
+\subsection{Stock Modelling}
+
+The main aim for this type of modelling was to predict whether the stock shifted up or down. Data was taken from the Dow Jones Industrial average which measures the stock performance of 30 large companies on stock exchanges across the United States, namely the NASDAQ and the New York Stock Exchange. Each day's difference was calculated between the opening and closing prices, and either a 1 or a -1 was decided to represent the stock market going up and down. For the scope of the project, and in line with other predictive modelling approaches, it was decided to only predict either the market going up or down. \\
+
+
+\subsection{Preprocessing}
+There was substantial preprocessing required for the data, first of all the stock market does not open on weekends or other holidays, however the news cycle very much does, thus the news over weekends was collated and averaged into the Friday figures. This meant of course that the prediction data had to the shifted, to ensure that information from the future was not being used to predict the data.\\
+
+The next issue to consider whilst preprocessing the data was the issue of lag modelling. It is reasonable to expect that if there is an underlying relationship between the Goldstein Score/Average Tone and the daily stock price day, it isn't restricted to just the previous day's news, but instead could be a few days worth of modelling. Thus the average scores and the Goldstein scales would have to be smoothed using several moving window calculations.
+
+
+
