@@ -24,6 +24,7 @@
 \usepackage{enumitem}
 \usepackage{bashful}
 \usepackage{array}
+\usepackage{subfig}
 \usepackage{url}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
@@ -39,16 +40,17 @@
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
-\title{A thesis exploring random crap Jalaj can put together in 2 months}
+\begin{document}
+\title{Insert title here}
 \author{}
 \date{}
 %\setcounter{secnumdepth}{-2}
-\begin{document}
+ \thispagestyle{empty}
 	
 	\begin{titlepage}
 		\vspace{\fill}
 		\maketitle
+		 \thispagestyle{empty}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.4\textwidth]{Images/SchoolLogo.png}
@@ -69,14 +71,18 @@
 		\end{itemize}
 		\vspace{\fill}
 	\end{titlepage}
-\section{Introduction}
-This is my dissertation *dabs*
+
+
+\tableofcontents
+\include{Introduction}
 \include{Prior}
 \include{gdelt}
 \include{Topic}
 \include{Scope}
 \include{Modelling}
-\include{Experiments}
+\include{Results}
+\include{Discussion}
+\include{Conclusions}
 \bibliographystyle{acm}
 \bibliography{ref}
 \end{document}
