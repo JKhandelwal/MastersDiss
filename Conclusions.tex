@@ -5,10 +5,16 @@ I have conclusions
 
 
 \section{Further Work}
+There is a large amount of further work which can be explored from this, in all aspects, from the topic modelling, to the modelling of Average Tone against the Goldstein Scale. 
 
-There is a large amount of further work which can be explored. One of the most apparent extensions of this would be to try these methods on more data. GDELT is a large resource, and a vast amount of data is available to be explored and tried, from data from multiple other countries, to using more historical long term data.
+One of the most apparent extensions of this work would be to try these methods on more data. GDELT is a large resource, and a vast amount of data is available to be explored and tried, from data from multiple other countries, to using more historical long term data. 
 
+Furthermore, from these experiments alone it appears unlikely that topic modelling can be used in the way that it was initially thought in this dissertation. Even if the distance metrics are relatively accurate for new words and phrases, the topic models by design will inherently not be able to detect the presence of new topics, which would be a key aspect of this.
 
-One of the biggest challenges with this work is that it only works on a single word basis. All of the clusters etc are based on single words, and not phrases, or content. This means there would still have to be a large amount of manual work required when using this approach, to ensure that the algorithms do not end up working with incoherence. The principle of garbage in garbage out also applies here, there is a substantial amount of preprocessing required to ensure that you're feeding the algorithm useful information, and even after that,
+Another extension which could be performed is to use a method which works on more than just one word at a time. Both the TF-IDF K-Means and LDA model approaches work on a single word basis, which may not be enough to sufficiently separate the topics, thus an approach which takes into consideration phrases or bigrams may allow for more context to be explored which in turn may lead to better separability within the topics. 
 
-Another further exploration could be an attempt to predict the stock prices directly, this work only aimed to predict changes in stock, and as a result this doesn't take magnitude of change into consideration, a large stock fall is the same as a small stock fall, but investor reactions may be different if it is only a minor fall in the market, and 
+One of the other main features which could be explored from a more modelling perspective could be an attempt to predict the stock shift in a more fine grained manner, this work only aimed to predict any changes in stock, and as a result this doesn't take magnitude of change into consideration, a large stock fall is the same as a small stock fall, but investor reactions may be different if it is only a minor fall in the market, thus being able to predict small, medium, or large shifts may become useful in the long term. 
+
+Another factor which wasn't modelled was building autoregressive style lagging for the stock prices themselves, along with the lagged models for the Average Tone and the Goldstein Scale. 
+
+This dissertation was an attempt into seeing if the Goldstein scale alongside the Average Tone from the GDELT database can be used as a measure of geopolitical risk and calculated against the curated parts of the Stock Market. 
