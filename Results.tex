@@ -120,7 +120,9 @@ Looking the the three topic model, the topics are even closer together than the 
 The 4 topic model behaves in a similar manner to the previous 2 topic models. the main words are split across the 4 topics with no real distinction between the topics present. 
 
 \subsubsection{K Means}
-Similar to the LDA models, the K-means was tried with 2, 3, and 4 clusters. The word cloud of the top words are shown in Figures \ref{fig:wck2}, \ref{fig:wck3}, and \ref{fig:wck4}. Alongside the word clouds, the clusters were decomposed into 2 and 3 dimensions by both Principal Component Analysis (PCA) and T-distributed Stochastic Neighbour Embedding (T-SNE). This was to see whether the clusters had been successful in separating the data at any level. This is shown for the different number of cluster in Figures \ref{fig:k2pca}, \ref{fig:k3pca}, and \ref{fig:k4pca} respectively. Furthermore, the Mahalanobis and Euclidean distances were plotted for all of the points associated with a cluster. This is shown in Figures \ref{fig:distk2}, \ref{fig:distk3}, and \ref{fig:distk4} respectively.
+Similar to the LDA models, the K-means was tried with 2, 3, and 4 clusters. The word cloud of the top words are shown in Figures \ref{fig:wck2}, \ref{fig:wck3}, and \ref{fig:wck4}. Alongside the word clouds, the clusters were decomposed into 2 and 3 dimensions by both Principal Component Analysis (PCA) and T-distributed Stochastic Neighbour Embedding (T-SNE). This was to see whether the clusters had been successful in separating the data at any level. This is shown for the different number of cluster in Figures \ref{fig:k2pca}, \ref{fig:k3pca}, and \ref{fig:k4pca} respectively. Furthermore, the Mahalanobis and Euclidean distances were plotted for all of the points associated with a cluster for all of the clusters present. This is shown in Figures \ref{fig:distk2}, \ref{fig:distk3}, and \ref{fig:distk4} respectively. 
+
+To compare the efficacy of clusters in being able to filter information, the Mahalanobis distance from centre of clusters for variety of phrases as calculated, and plotted in Figures \ref{fig:wordsk2}, \ref{fig:wordsk3}, and \ref{fig:wordsk4}, alongside the distribution of points for each cluster. For all of the Mahalanobis distances, the phrases were several orders of magnitude out from the distribution of points for each cluster, so the results had to be logged before being plotted.  
 \paragraph{Clustering with k=2}
 \begin{figure}[H]
 	\centering
@@ -147,6 +149,14 @@ Examining the Mahalanobis distances for the two clusters, there doesn't appear t
 	
 	\caption{Cluster Distances (Mahalanobis and Euclidean) for k=2 clusters}
 	\label{fig:distk2}
+\end{figure}
+
+Comparing the results plotted on the log scale shown in Figure \ref{fig:wordsk2}, the first thing which becomes apparent is that the distances for the words appears to be the same between clusters, i.e. all phrases tested are equally far from both cluster 0 and cluster 1, this is perhaps unsurprising as the distance from the both clusters is extremely large. Comparing the words themselves, aside from the individual word `covid`, the phrases are fairly close together, with what appears to be two sets of lines. The first lines are the `coronavirus hits remote utah`, and the `aboriginal peoples australia complain` with the remainder of the headlines making up the remainder of the lines, nearly all of the results are between 27 and 28.  
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/words_kmeans_mahalanobis_distance_k=2.png}
+	\caption{Log of Mahalanobis Distances for Clusters and Selected Phrases for k=2 clusters}
+	\label{fig:wordsk2}
 \end{figure}
 
 \paragraph{Clustering when k=3} 
@@ -179,6 +189,13 @@ The Mahalanobis distance, as with the k=2, appear to be bimodal with a peak betw
 	\label{fig:distk3}
 \end{figure}
 
+Comparing phrase distance with three clusters compared to two clusters, it is apparent that the distance behaviour is essentially similar in pattern with respect to both the distances from the clusters, and also the pattern of distances for the individual phrases, and the equality of the distances for each cluster.  
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/words_kmeans_mahalanobis_distance_k=3.png}
+	\caption{Log of Mahalanobis Distances for Clusters and Selected Phrases for k=3 clusters}
+	\label{fig:wordsk3}
+\end{figure}
 \paragraph{Clustering when k=4}
 Looking at the word clouds for 4 clusters It appears to be similar to both k=2 and k=3, in that all of the main words have been shared across the clusters. Cluster 2 has slightly more of the parsing errors associated with it, and thus is the more scattered of the clusters, and cluster 3 is slightly more focused on the pandemic in the US with words such as Test, and White House.
 
@@ -211,6 +228,13 @@ In line with the previous clusters, the Mahalanobis distance is also bimodal. Th
 	\label{fig:distk4}
 \end{figure}
 
+Comparing phrase distance with three clusters compared to both two and three clusters. The distance behaviour again appears to be identical across clusters, and the pattern of distances remains more or less the same. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/words_kmeans_mahalanobis_distance_k=4.png}
+	\caption{Log of Mahalanobis Distances for Clusters and Selected Phrases for k=4 clusters}
+	\label{fig:wordsk4}
+\end{figure}
 \subsection{Modelling Stock Prices}
 The table of accuracy predictions for the different models is shown in Table \ref{table:modaccuracy}. Several models had similar accuracy scores, though it should be noted that the predictions were on a very small dataset, so even one or two correct or incorrect predictions could sway the result considerably. 
 
@@ -258,7 +282,7 @@ The best model's algorithm was used to train another model which just used the p
 
 The predictions are shown in figure \ref{fig:modelpred}, where the magnitude of the differences has been plotted, alongside whether the best model was correct in predicting a positive or negative shift (blanks are weekends or days when the stock market didn't operate). There does not appear to be a time based prediction component, the model is just as likely to predict correctly or incorrectly regardless of the time that it is predicting on. Interestingly, the model does not appear to be very good at predicting for large stretches correctly, it correctly predicts for a day or two, and then has incorrect predictions for a similar length of interval. The exception to this is when halfway through the prediction, the model correctly predicts the spike and the subsequent fall and recovery. 
 
-The distribution of magnitude of the positive and negative daily differences is plotted in Figure \ref{fig:distmodel}.  It is apparent that the model is better at predicting smaller differences in the stock market. the majority of incorrect predictions come from larger negative values and slightly from the positive jumps. There are significantly fewer incorrect predictions when the market jumps between -500 and +500 points. Interestingly, there is a small bump at a large positive value of +1000, suggesting the model was good at predicting large positive values. 
+The distribution of magnitude of the positive and negative daily differences is plotted in Figure \ref{fig:distmodel}.  It is apparent that the model is better at predicting smaller differences in the stock market. the majority of incorrect predictions come from larger negative values closer to -500 points and slightly from the positive jumps. There are significantly fewer incorrect predictions when the market jumps between -250 and +250 points. Interestingly, there is a small bump at a large positive value of +1000, suggesting the model was good at predicting large positive values. 
 
 \begin{figure}[H]
 	\centering
