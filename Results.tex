@@ -1,7 +1,7 @@
 \section{Results}
+\label{results}
 \subsection{Dow Jones and GDELT}
-The data from the Dow Jones and the GDELT Average Tone and Goldstein Scale is presented. Figure \ref{fig:dow_diff} shows the Dow difference between open and close prices on a daily basis. This data is fairly chaotic, with the difference jumping between positive and negative frequently and without an apparent pattern, thus a moving average of 3 days was plotted, which also remains slightly chaotic, but more trends appear. The market difference appears to be getting negatively larger towards the middle of the time period before recovering towards 0. 
-
+The data from the Dow Jones and the GDELT Average Tone and Goldstein Scale is presented. Figure \ref{fig:dow_diff} shows the Dow difference between open and close prices on a daily basis. This data is fairly chaotic, with the difference jumping between positive and negative frequently and without an apparent pattern, thus a moving average of 3 days was plotted, which also remains slightly chaotic, but more trends appear. The market difference appears to be getting negatively larger towards the middle of the time period before recovering towards 0. The stock prices appeared to take a dive throughout March, which can be explained by the USA China trade flareups, and more pertinently, the impact of Covid-19. 
 \begin{figure}[H]
 	\centering
 	\subfloat[Dow Jones Daily Difference]{  \includegraphics[width=0.45\textwidth]{images/dow_diff.png}\label{fig:diff}}
@@ -10,7 +10,7 @@ The data from the Dow Jones and the GDELT Average Tone and Goldstein Scale is pr
 	\label{fig:dow_diff}
 \end{figure}
 
-Figure \ref{fig:avg_tone_diff} shows the daily Average tone of the events across days. Whilst this data is less chaotic than the Dow Jones data, the moving average for 3 days was still plotted and is shown in Figure \ref{fig:avg_ma}. It is immediately apparent that the Average Tone is always negative, which is perhaps to be expected given the frosty relationship between the USA and China during the months of March and April. What the moving average shows, is that the Dow Jones follows a slightly similar path throughout time, only a few dats later, as the trough in the moving average for the Dow Jones difference occurs a few days after the trough in the average tone.
+Figure \ref{fig:avg_tone_diff} shows the daily Average tone of the events across days. Whilst this data is less chaotic than the Dow Jones data, the moving average for 3 days was still plotted and is shown in Figure \ref{fig:avg_ma}. It is immediately apparent that the Average Tone is always negative, which is perhaps to be expected given the frosty relationship between the USA and China during the months of March and April. What the moving average shows, is that the Dow Jones follows a slightly similar path throughout time, only a few days later, as the trough in the moving average for the Dow Jones difference occurs a few days after the trough in the average tone.
 
 \begin{figure}[H]
 	\centering
@@ -32,7 +32,7 @@ Figure \ref{fig:gs_diff} shows the daily average of the Goldstein Scale of event
 
 \subsection{Topic Modelling}
 \subsubsection{TF-IDF}
-The top TF-IDF terms are shown for the USA China data across the corpus in Figure \ref{fig:tfidfusachina}. This data was achieved by taking the average of the TF-IDF values across the entire dataset. The average values are slightly lower across the corpus compared to individual documents, as there will be a number of documents with TF-IDF values of 0, as the word does not exist in those documents. The 0 values of the TF-IDF values are included in the mean calculations. This is due to the parsing process for URLs not being perfect. If the 0 values were excluded, the TF-IDF values would be non representative across the entire corpus for some words as they may have high TF-IDF values for a very small number of documents, and 0 for all of the other documents.
+The top TF-IDF terms are shown for the USA China data across the corpus in Figure \ref{fig:tfidfusachina}. This data was achieved by taking the average of the TF-IDF values across the entire dataset. The average values are slightly lower across the corpus compared to individual documents, as there will be a number of documents where specific words have TF-IDF values of 0, as those words do not exist in those documents. These 0 TF-IDF values are included in the mean calculations as the parsing process for URLs is not perfect in retrieving headlines. If the 0 TF-IDF values were excluded from the averaging calculations, the top words by TF-IDF would be non representative of the whole corpus, as there may be some `words` present only in a small number of documents, where the words are the result of parsing errors, and thus have artificially high TF-IDF values if their 0 values from all other documents are not averaged.
 
 \begin{figure}[H]
 	\centering
@@ -58,7 +58,7 @@ For the top values, the distribution of the tf-idf values across documents was c
 \paragraph{Initial LDA}
 Initially a topic model was run on one day's worth of Event data. The day was the 1st of November 2019. This was done as a reference point before running the LDA models on the specific USA/China chosen data.
 
-There were two different topic models tried. Firstly one model with 3 topics was tried and then one model with 5 topics. The top words from each model are shown in word cloud format in Figures \ref{fig:single3wc} and \ref{fig:single5wc}. Alongside the word cloud, for each topics, the weight and the word count of the top words was also calculated and plotted. 
+There were two different topic models tried. Firstly one model with 3 topics was tried and then one model with 5 topics. It was unknown how many topics would be present in the data, thus two different values were chosen, one with a smaller number of topics (3), and a slightly larger number of topics (5). The two values were tested to see if a smaller or a larger number of topics would represent any topics present in the data. The top words from each model are shown in word cloud format in Figures \ref{fig:single3wc} and \ref{fig:single5wc}. Alongside the word cloud, for each topics, the weight and the word count of the top words was also calculated and plotted. 
 	
 \begin{figure}[H]
 	\centering
@@ -69,7 +69,7 @@ There were two different topic models tried. Firstly one model with 3 topics was
 	\label{fig:single3}
 \end{figure}
 
-Examining the word clouds for the model with three topics, there are not any clear topics which are apparent. Topic 2 could vaguely be about the impeachment process for Donald Trump, Topic 0 appears to be focused on police brutality as a topic, and Topic 1 could broadly be referred to in terms of international news. Examining the word importances, the main theme across topics ia that the word count is not the same as the word importance, in that some words have much higher occurrences, but lower weights and vice versa.
+Examining the word clouds for the model with three topics, there are not any clear topics which are apparent. Topic 2 could vaguely be about the impeachment process for Donald Trump, Topic 0 appears to be focused on police brutality as a topic, and Topic 1 could broadly be referred to in terms of international news. Examining the word importances, the main theme across topics ia that the word count is not the same as the word importance, in that some words have much higher occurrences, but lower weights and vice versa. This is perhaps to be expected, as the word count and importance do not have to be linked.
 
 \begin{figure}[H]
 	\centering
@@ -83,7 +83,7 @@ Examining the word clouds for the model with three topics, there are not any cle
 Examining the 5 topic model, the topics are much closer together, its very difficult to find a central topic for each topic, Topic 3 could potentially be about police and court information, but aside from that there does not appear to any coherency otherwise, with words like Trump being in multiple topics and international countries spread across topics. The word importance and weight plot also does not reveal anything new, like the previous model, the word's count is not related to the importance and perhaps expectedly, the words in the topics are not related to each other.
 
 \paragraph{USA/China Data}
-A similar procedure was used for the USA/China data, but models with 2, 3, and 4 topics each were tried. The word clouds of the results and the subsequent word importances to each topic are shown in Figures \ref{fig:usa2}, \ref{fig:usa3}, and \ref{fig:usa4}. 
+A similar procedure was used for the USA/China data, but models with 2, 3, and 4 topics each were tried, as it was not completely clear whether a smaller or larger amount of topics would represent the data better. The word clouds of the results and the subsequent word importances to each topic are shown in Figures \ref{fig:usa2}, \ref{fig:usa3}, and \ref{fig:usa4}. 
 \begin{figure}[H]
 	\centering
 	\subfloat[USA/China Word Cloud 2 Topics]{  \includegraphics[width=0.6\textwidth]{images/uschina/word_cloud_usa_2_topics.png}\label{fig:us2wc}}\\
@@ -116,7 +116,7 @@ Looking the the three topic model, the topics are even closer together than the 
 The 4 topic model behaves in a similar manner to the previous 2 topic models. the main words are split across the 4 topics with no real distinction between the topics present. 
 
 \subsubsection{K Means}
-Similar to the LDA models, the K-means was tried with 2, 3, and 4 clusters. The word cloud of the top words are shown in Figures \ref{fig:wck2}, \ref{fig:wck3}, and \ref{fig:wck4}. Alongside the word clouds, the clusters were decomposed into 2 and 3 dimensions by both Principal Component Analysis (PCA) and T-distributed Stochastic Neighbour Embedding (T-SNE). This was to see whether the clusters had been successful in separating the data at any level. This is shown for the different number of cluster in Figures \ref{fig:k2pca}, \ref{fig:k3pca}, and \ref{fig:k4pca} respectively. Furthermore, the Mahalanobis and Euclidean distances were plotted for all of the points associated with a cluster for all of the clusters present. This is shown in Figures \ref{fig:distk2}, \ref{fig:distk3}, and \ref{fig:distk4} respectively. 
+Similar to the LDA models, the K-means was tried with 2, 3, and 4 clusters. The word cloud of the top words are shown in Figures \ref{fig:wck2}, \ref{fig:wck3}, and \ref{fig:wck4}. Alongside the word clouds, the clusters were decomposed into 2 and 3 dimensions by both Principal Component Analysis (PCA) and T-distributed Stochastic Neighbour Embedding (T-SNE) \cite{maaten2008visualizing}. This was to see whether the clusters had been successful in separating the data at any level. This is shown for the different number of cluster in Figures \ref{fig:k2pca}, \ref{fig:k3pca}, and \ref{fig:k4pca} respectively. Furthermore, the Mahalanobis and Euclidean distances were plotted for all of the points associated with a cluster for all of the clusters present. This is shown in Figures \ref{fig:distk2}, \ref{fig:distk3}, and \ref{fig:distk4} respectively. 
 
 To compare the efficacy of clusters in being able to filter information, the Mahalanobis distance from centre of clusters for variety of phrases as calculated, and plotted in Figures \ref{fig:wordsk2}, \ref{fig:wordsk3}, and \ref{fig:wordsk4}, alongside the distribution of points for each cluster. For all of the Mahalanobis distances, the phrases were several orders of magnitude out from the distribution of points for each cluster, so the Mahalanobis distance results were logged before being plotted.  
 \paragraph{Clustering with k=2}
@@ -137,7 +137,7 @@ Examining the word cloud created for a two cluster model, a similar picture appe
 	\caption{Decompositions of the clusters in 2 and 3 dimensions using PCA and T-SNE for k=2}
 	\label{fig:k2pca}
 \end{figure}
-Examining the Mahalanobis distances for the two clusters, there does not appear to be any noticeable pattern, the distributions are slightly bimodal, compared to the Euclidean distances, which are much more normally distributed. The majority of points are associated with cluster 0, with the rest going to Cluster 1.
+Examining the Mahalanobis distances for the two clusters, there does not appear to be any noticeable pattern, the distributions are slightly bimodal, compared to the Euclidean distances, which appears to be slightly normally distributed shape wise, though normality would not be expected as the 0 distance would be the cluster centre, from which the distances are measured. The majority of points are associated with cluster 0, with the rest going to Cluster 1.
 \begin{figure}[H]
 	\centering
 	\subfloat[Mahalanobis Distance]{  \includegraphics[width=0.45\textwidth]{images/kmeans_mahalanobis_distance_k=2.png}\label{fig:mhk2}}
@@ -232,7 +232,7 @@ Comparing phrase distance with three clusters compared to both two and three clu
 	\label{fig:wordsk4}
 \end{figure}
 \subsection{Modelling Stock Prices}
-The table of accuracy predictions for the different models is shown in Table \ref{table:modaccuracy}. Several models had similar accuracy scores, though it should be noted that the predictions were on a very small dataset, so even one or two correct or incorrect predictions could sway the result considerably. 
+The table of prediction accuracies for the different models is shown in Table \ref{table:modaccuracy}. This is the percentage of days over the prediction interval of May and June that each model was able to predict correctly. Several models had similar accuracy scores, though it should be noted that the predictions were on a very small dataset, so even one or two correct incorrect predictions could sway the result considerably. 
 
 The manually lagged models appeared to be the least best, in these models 5 days worth of previous days were added as 5 features to the data, and no other averaging methodology applied. Interestingly, the random forests classifiers appeared to do well with whatever data structure was used. Furthermore, models which applied moving window calculations did well, with on average the exponentially smoothed models doing the best.
 
@@ -274,7 +274,7 @@ Manually 4 day lagged Support Vector Machine &     0.375 \\
 		\label{table:modaccuracy}
 \end{table}
 
-The best model's algorithm was used to train another model which just used the previous day's difference, as a reference to see if the model actually provided any improvement. It found that the accuracy improved considerably on the May June Data, with the reference model providing 50\% accuracy, and the exponentially smoothed random forest providing 62.5\% accuracy, which on the face of it is a significant improvement. 
+Comparing the reference model to the exponentially lagged Random Forests Model on May June Data, The reference model was 50\% accurate, and the exponentially smoothed random forest achieved an accuracy of 62.5\%, which would appear to suggest that the Average Tone and Goldstein Scale values do provide value in terms of predicting shift. 
 
 The predictions are shown in figure \ref{fig:modelpred}, where the magnitude of the differences has been plotted, alongside whether the best model was correct in predicting a positive or negative shift (blanks are weekends or days when the stock market did not operate). There does not appear to be a time based prediction component, the model is just as likely to predict correctly or incorrectly regardless of the time that it is predicting on. Interestingly, the model does not appear to be very good at predicting for large stretches correctly, it correctly predicts for a day or two, and then has incorrect predictions for a similar length of interval. The exception to this is when halfway through the prediction, the model correctly predicts the spike and the subsequent fall and recovery. 
 
@@ -283,7 +283,7 @@ The distribution of magnitude of the positive and negative daily differences is 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/model_pred_time.png}
-	\caption{The Dow Jones daily changes in prediction dataset, and whether the model predicted the the result correctly or not)}
+	\caption{The Dow Jones daily changes in prediction dataset, and whether the model predicted the result correctly or not on a daily basis over the prediction interval of May and June 2020}
 	\label{fig:modelpred}
 \end{figure}
 
@@ -291,7 +291,7 @@ The distribution of magnitude of the positive and negative daily differences is 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/dist_of_model.png}
-	\caption{The distribution of the daily differences between open and close prices where the model predicted correctly vs predicted incorrectly)}
+	\caption{The distribution of the daily differences between open and close prices where the model predicted correctly vs predicted incorrectly}
 	\label{fig:distmodel}
 \end{figure}
 
