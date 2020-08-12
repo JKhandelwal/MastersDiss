@@ -1,35 +1,5 @@
 \section{Results}
 \label{results}
-\subsection{Dow Jones and GDELT}
-The data from the Dow Jones and the GDELT Average Tone and Goldstein Scale is presented. Figure \ref{fig:dow_diff} shows the Dow difference between open and close prices on a daily basis. This data is fairly chaotic, with the difference jumping between positive and negative frequently and without an apparent pattern, thus a moving average of 3 days was plotted, which also remains slightly chaotic, but more trends appear. The market difference appears to be getting negatively larger towards the middle of the time period before recovering towards 0. The stock prices appeared to take a dive throughout March, which can be explained by the USA China trade flareups, and more pertinently, the impact of Covid-19. 
-\begin{figure}[H]
-	\centering
-	\subfloat[Dow Jones Daily Difference]{  \includegraphics[width=0.45\textwidth]{images/dow_diff.png}\label{fig:diff}}
-	\subfloat[Dow Jone Moving Average]{  \includegraphics[width=0.45\textwidth]{images/dow_diff_ma.png}\label{fig:dow_diff_ma}}\\
-	\caption{Dow Jones Daily Difference and Daily Difference Moving Average}
-	\label{fig:dow_diff}
-\end{figure}
-
-Figure \ref{fig:avg_tone_diff} shows the daily Average tone of the events across days. Whilst this data is less chaotic than the Dow Jones data, the moving average for 3 days was still plotted and is shown in Figure \ref{fig:avg_ma}. It is immediately apparent that the Average Tone is always negative, which is perhaps to be expected given the frosty relationship between the USA and China during the months of March and April. What the moving average shows, is that the Dow Jones follows a slightly similar path throughout time, only a few days later, as the trough in the moving average for the Dow Jones difference occurs a few days after the trough in the average tone.
-
-\begin{figure}[H]
-	\centering
-	\subfloat[GDELT Average Tone]{  \includegraphics[width=0.45\textwidth]{images/avgtone.png}\label{fig:avg}}
-	\subfloat[GDELT Average Tone 3 Day Moving Average]{  \includegraphics[width=0.45\textwidth]{images/avgtone_ma.png}\label{fig:avg_ma}}\\
-	\caption{GDELT Average Tone over time and Moving Average}
-	\label{fig:avg_tone_diff}
-\end{figure}
-
-Figure \ref{fig:gs_diff} shows the daily average of the Goldstein Scale of events across time, and as with the previous two plots, the 3 day moving average is shown in Figure \ref{fig:gs_ma}. The Goldstein Score, like the Dow Jones difference, appears to be chaotic, shifting from positive to negative fairly frequently. The moving average shows that there appears to be a peak halfway through the time period, followed by more fluctuation. 
-
-\begin{figure}[H]
-	\centering
-	\subfloat[GDELT Goldstein Scale]{  \includegraphics[width=0.45\textwidth]{images/goldsteinscore.png}\label{fig:gs}}
-	\subfloat[GDELT Goldstein Scale 3 Day Moving Average]{  \includegraphics[width=0.45\textwidth]{images/goldsteinscore_ma.png}\label{fig:gs_ma}}\\
-	\caption{GDELT Goldstein Scale over time and Moving Average}
-	\label{fig:gs_diff}
-\end{figure}
-
 \subsection{Topic Modelling}
 \subsubsection{TF-IDF}
 The top TF-IDF terms are shown for the USA China data across the corpus in Figure \ref{fig:tfidfusachina}. This data was achieved by taking the average of the TF-IDF values across the entire dataset. The average values are slightly lower across the corpus compared to individual documents, as there will be a number of documents where specific words have TF-IDF values of 0, as those words do not exist in those documents. These 0 TF-IDF values are included in the mean calculations as the parsing process for URLs is not perfect in retrieving headlines. If the 0 TF-IDF values were excluded from the averaging calculations, the top words by TF-IDF would be non representative of the whole corpus, as there may be some `words` present only in a small number of documents, where the words are the result of parsing errors, and thus have artificially high TF-IDF values if their 0 values from all other documents are not averaged.
@@ -126,7 +96,7 @@ To compare the efficacy of clusters in being able to filter information, the Mah
 	\caption{Word Cloud for k=2 clusters}
 	\label{fig:wck2}
 \end{figure}
-Examining the word cloud created for a two cluster model, a similar picture appears as with the LDA models. There are several words which are close to both of the clusters, which, in a similar fashion to the LDA model, mean that any topics present are not being differentiated. This is evident in Figure \ref{fig:k2pca}, in which both T-SNE and PCA in both 2 and 3 dimensions show that the clusters are not distinct from each other. Interestingly, both the 2d and 3D PCA plots, Figures \ref{fig:pca2k2} and \ref{fig:pca3k2}, appear to show clean boundaries, however, it is not the most obvious of cluster definitions.
+Examining the word cloud created for a two cluster model, a similar picture appears as with the LDA models. There are several words which are close to both of the clusters, which, in a similar fashion to the LDA model, mean that any topics present are not being differentiated. This is evident in Figure \ref{fig:k2pca}, in which both T-SNE and PCA in both 2 and 3 dimensions show that the clusters are not distinct from each other. Interestingly, both the 2d and 3D PCA plots, Figures \ref{fig:pca2k2} and \ref{fig:pca3k2}, appear to show clean boundaries, however, it is not the most obvious of cluster definitions. The main caveat with the PCA and T-SNE plots is that the proportion of explained variance in the dimensions selected is extremely poor, each dimension only captures around 0.07 of the explained variance. This means that the clusters may still be accurately in another dimension/combination of dimensions, but it is not visible in this dimension. 
 
 \begin{figure}[H]
 	\centering
@@ -147,7 +117,7 @@ Examining the Mahalanobis distances for the two clusters, there does not appear 
 	\label{fig:distk2}
 \end{figure}
 
-Comparing the results plotted on the log scale shown in Figure \ref{fig:wordsk2}, the first thing which becomes apparent is that the distances for the words appears to be the same between clusters, i.e. all phrases tested are equally far from both cluster 0 and cluster 1, this is perhaps unsurprising as the distance from the both clusters is extremely large. Comparing the words themselves, aside from the individual word `covid`, the phrases are fairly close together, with what appears to be two sets of lines. The first lines are the `coronavirus hits remote utah`, and the `aboriginal peoples australia complain` with the remainder of the headlines making up the remainder of the lines, nearly all of the results are between 27 and 28 in terms of the absolute logged Mahalanobis distance.  
+Comparing the results plotted on the log scale shown in Figure \ref{fig:wordsk2}, the first thing which becomes apparent is that the distances for the words appears to be the same between clusters, i.e. all phrases tested are equally far from both cluster 0 and cluster 1, this is perhaps unsurprising as the distance from the both clusters is extremely large. Comparing the words themselves, aside from the individual word `covid`, the phrases are fairly close together, with what appears to be two sets of lines. The first lines are the `coronavirus hits remote utah`, and the `aboriginal peoples australia complain` with the remainder of the headlines making up the remainder of the lines, nearly all of the results are between 27 and 28 in terms of the absolute logged Mahalanobis distance. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/words_kmeans_mahalanobis_distance_k=2.png}
@@ -155,82 +125,9 @@ Comparing the results plotted on the log scale shown in Figure \ref{fig:wordsk2}
 	\label{fig:wordsk2}
 \end{figure}
 
-\paragraph{Clustering when k=3} 
-Examining the word cloud when there are 3 clusters, all of the clusters are similar to the k=2, in that they have very similar topics related to China and the Covid 19 Pandemic. Examining the decomposition plots, the clusters are close together, and the cluster definitions do not appear to be definitively useful. There are two smaller clusters distance from the main body in the T-SNE 2d plot in Figure \ref{fig:ts2k3}, which potentially could be clusters, but when examined, they represented a mixture of parsing errors from URLs, and numbers and letter combinations left over from URL parsing.  
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/kmeans_word_cloud_k=3.png}
-	\caption{Word Cloud for k=3 clusters}
-	\label{fig:wck3}
-\end{figure}
+\paragraph{Clustering when k=3 or k=4} 
+When the number of clusters was increased to 3 or 4, it was found that there was no material change in either the topic word clouds or the decomposition plots. Thus, the word cloud, decomposition plots, and Mahalanobis distance plots are included in the appendices \ref{k3} and \ref{k4}. The word clouds for both k=3 and k=4 behaved the same as k=2, where the topics were all very similar, and the decomposition plots suggest the cluster definitions are definitively useful, and the boundaries are not as clear as they were for k=2.  There are a few features of note however. when k was 3, there were 2 sets of points away from the main cluster, but when examined, these represented the points associated with the parsing errors from the URLs. The cluster Mahalanobis distances appear to be bimodal with the same range of distances for the points. As expected, the Mahalanobis distance for the selected phrases were similar distances away, with the pattern of distances being similar.
 
-\begin{figure}[H]
-	\centering
-	\subfloat[2D PCA k=3]{  \includegraphics[width=0.45\textwidth]{images/kmeans_2d_pca_k=3.png}\label{fig:pca2k3}}
-	\subfloat[3D PCA k=3]{  \includegraphics[width=0.45\textwidth]{images/kmeans_3d_pca_k=3.png}\label{fig:pca3k3}}\\
-	\subfloat[2D T-SNE k=3]{  \includegraphics[width=0.45\textwidth]{images/kmeans_2d_tsne_k=3.png}\label{fig:ts2k3}}
-	\subfloat[3D T-SNE k=3]{  \includegraphics[width=0.45\textwidth]{images/kmeans_3d_tsne_k=3.png}\label{fig:ts3k3}}\\
-	\caption{Decompositions of the clusters in 2 and 3 dimensions using PCA and T-SNE for k=3}
-	\label{fig:k3pca}
-\end{figure}
-The Mahalanobis distance, as with the k=2, appear to be bimodal with a peak between 35 and 40, and a second peak above 50. The Euclidean distances are closer to being normally distributed. The majority of points are associated with cluster 2, with cluster 0 being the second biggest, and cluster 1 being the smallest.  
-
-
-\begin{figure}[H]
-	\centering
-	\subfloat[Mahalanobis Distance]{  \includegraphics[width=0.45\textwidth]{images/kmeans_mahalanobis_distance_k=3.png}\label{fig:mhk3}}
-	\subfloat[Euclidean Distances]{  \includegraphics[width=0.45\textwidth]{images/kmeans_euclidean_distance_k=3.png}\label{fig:euk3}}\\
-	
-	\caption{Cluster Distances (Mahalanobis and Euclidean) for k=3 clusters}
-	\label{fig:distk3}
-\end{figure}
-
-Comparing phrase distance with three clusters compared to two clusters, it is apparent that the distance behaviour is essentially similar in pattern with respect to both the distances from the clusters, and also the pattern of distances for the individual phrases, and the equality of the distances for each cluster.  
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/words_kmeans_mahalanobis_distance_k=3.png}
-	\caption{Log of Mahalanobis Distances for Clusters and Selected Phrases for k=3 clusters}
-	\label{fig:wordsk3}
-\end{figure}
-\paragraph{Clustering when k=4}
-Looking at the word clouds for 4 clusters It appears to be similar to both k=2 and k=3, in that all of the main words have been shared across the clusters. Cluster 2 has slightly more of the parsing errors associated with it, and thus is the more scattered of the clusters, and cluster 3 is slightly more focused on the pandemic in the US with words such as Test, and White House.
-
-The decompositions are similar to the previous cluster results, especially in the PCA which suggests that boundaries between the clusters are very strong, but the `cluster` each cluster creates is not representative.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/kmeans_word_cloud_k=4.png}
-	\caption{Word Cloud for k=4 clusters}
-	\label{fig:wck4}
-\end{figure}
-
-
-\begin{figure}[H]
-	\centering
-	\subfloat[2D PCA k=4]{  \includegraphics[width=0.45\textwidth]{images/kmeans_2d_pca_k=4.png}\label{fig:pca2k4}}
-	\subfloat[3D PCA k=4]{  \includegraphics[width=0.45\textwidth]{images/kmeans_3d_pca_k=4.png}\label{fig:pca3k4}}\\
-	\subfloat[2D T-SNE k=4]{  \includegraphics[width=0.45\textwidth]{images/kmeans_2d_tsne_k=4.png}\label{fig:ts2k4}}
-	\subfloat[3D T-SNE k=4]{  \includegraphics[width=0.45\textwidth]{images/kmeans_3d_tsne_k=4.png}\label{fig:ts3k4}}\\
-	\caption{Decompositions of the clusters in 2 and 3 dimensions using PCA and T-SNE for k=4}
-	\label{fig:k4pca}
-\end{figure}
-In line with the previous clusters, the Mahalanobis distance is also bimodal. The Euclidean distance as before appears to be more normal. In this cluster, Cluster 2 gets the majority of the words, followed by Cluster 3 and 0, and then Cluster 1. 
-
-\begin{figure}[H]
-	\centering
-	\subfloat[Mahalanobis Distance]{  \includegraphics[width=0.45\textwidth]{images/kmeans_mahalanobis_distance_k=4.png}\label{fig:mhk4}}
-	\subfloat[Euclidean Distances]{  \includegraphics[width=0.45\textwidth]{images/kmeans_euclidean_distance_k=4.png}\label{fig:euk4}}\\
-	
-	\caption{Cluster Distances (Mahalanobis and Euclidean) for k=4 clusters}
-	\label{fig:distk4}
-\end{figure}
-
-Comparing phrase distance with three clusters compared to both two and three clusters. The distance behaviour again appears to be identical across clusters, and the pattern of distances remains more or less the same. 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/words_kmeans_mahalanobis_distance_k=4.png}
-	\caption{Log of Mahalanobis Distances for Clusters and Selected Phrases for k=4 clusters}
-	\label{fig:wordsk4}
-\end{figure}
 \subsection{Modelling Stock Prices}
 The table of prediction accuracies for the different models is shown in Table \ref{table:modaccuracy}. This is the percentage of days over the prediction interval of May and June that each model was able to predict correctly. Several models had similar accuracy scores, though it should be noted that the predictions were on a very small dataset, so even one or two correct incorrect predictions could sway the result considerably. 
 
@@ -295,7 +192,30 @@ The distribution of magnitude of the positive and negative daily differences is 
 	\label{fig:distmodel}
 \end{figure}
 
+\subsubsection{Portfolio Results}
+3 different portfolio styles were tried, firstly a balanced strategy, where half of the capital is used every time shares are bought, and half of the shares are sold whenever shares are sold. This is shown in Figure \ref{fig:port_1}. The second strategy focused on maximising capital, so only \unboldmath$\frac{1}{5}$ of capital was used to buy shares, and $\frac{4}{5}$ of shares were sold whenever shares were sold. This is shown in Figure \ref{fig:port_2}. The final strategy was a shares maximising strategy where $\frac{4}{5}$ of capital was used to buy shares any time shares were brought, and $\frac{1}{5}$ of shares were sold whenever shares were sold. This is shown in Figure \ref{fig:port_3}. All of these strategies started off with no initial shares, and an initial capital of 2000, and used a prediction sensitivity threshold of 60\%. 
 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/portfolio_1.png}
+	\caption{The amount of shares, capital, and Total Asset Value plotted through the time for the first portfolio strategy}
+	\label{fig:port_1}
+\end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/portfolio_2.png}
+	\caption{The amount of shares, capital, and Total Asset Value plotted through the time for the second portfolio strategy}
+	\label{fig:port_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/portfolio_3.png}
+	\caption{The amount of shares, capital, and Total Asset Value plotted through the time for the third portfolio strategy}
+	\label{fig:port_3}
+\end{figure}
+
+The first thing to be noted in all of the strategies, is that in all cases, the predictive model was slightly worse over the time period compared to the reference model. This is mostly likely because the predictive model in all cases held on to the stock around the 10th of June, after which the value of the stock decreased considerably and the model was not able to make up the difference within the remaining time period. The second point to be made is that all of the strategies accrued financial gain, though the model to maximise shares had the highest total asset value at the end of the time period, followed by the half and half strategy, followed by the capital strategy. The shares total asset value at the end was significantly beyond 2200, which represents more than a 10\% gain in the market over the initial capital investment. However, by comparison the maximising capital strategy only achieved an asset value of 2060, which is a significantly lower growth. The half capital and half shares strategy was doing well, especially recovering after the drop in the middle of the month, but it fell slightly to record a value of nearly 2200, which still is nearly a 10\% gain. 
 

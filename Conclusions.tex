@@ -1,6 +1,10 @@
 \section{Conclusions}
 \label{conclusions}
-The aim of this dissertation was to use the GDELT database to build topic models from news headlines, and if that were successful to use the topic model as a filter to collect relevant news which contained topics similar to the topic model, and then use the Conflict Cooperation Goldstein scale as a geopolitical risk measure to predict against the stock market. 
+There are many geopolitical events in the world, which affect markets. These are often represented and reported to people in various news sources. To be able to find and predict the impact such events would have on markets, these events and news sources would have to be treated mathematically. This would involved identifying the events determining the tone and impact of the news associated with these events. Then, to see how these events affect stock markets, build models on historical data linking markets to the event-tone and then automate the process such that it can be used as part of an advisory system for investors/shareholders in markets. 
+
+This was distilled down to two features, firstly to be able to capture and cluster these events occurring in the news via topic models, and then use classical machine learning algorithms to use the quantitative values of the Tone and Goldstein Scale and predict shifts in the stock market. 
+
+This dissertation aimed to use the GDELT database to build topic models from news headlines, and if that were successful to use the topic model as a filter to collect relevant news which contained topics similar to the topic model, and then use the Conflict Cooperation Goldstein scale and the Average tone of the articles which covered these events as a geopolitical risk measure to predict changes in the Dow Jones index. 
 
 There were several approaches to calculating geopolitical risk in the past which work from manually calculating occurrences of key words in news articles. This dissertation used a pre-existing Conflict Cooperation scale from events as a measure of geopolitical risk, with the main filtering occurring by choosing which events to factor in based on the headlines of those events.  The original attempt for topic modelling was to use a LDA model on restricted data to attempt to separate topics.    
 
