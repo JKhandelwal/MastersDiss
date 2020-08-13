@@ -16,8 +16,8 @@ The Goldstein scale and average tone values were aggregated across the dates, an
  
  \begin{figure}[H]
  	\centering
- 	\subfloat[GDELT Average Tone]{  \includegraphics[width=0.45\textwidth]{images/avgtone.png}\label{fig:avg}}
- 	\subfloat[GDELT Average Tone 3 Day Moving Average]{  \includegraphics[width=0.45\textwidth]{images/avgtone_ma.png}\label{fig:avg_ma}}\\
+ 	\subfloat[GDELT Average Tone]{  \includegraphics[width=0.49\textwidth]{images/avgtone.png}\label{fig:avg}}
+ 	\subfloat[GDELT Average Tone 3 Day Moving Average]{  \includegraphics[width=0.49\textwidth]{images/avgtone_ma.png}\label{fig:avg_ma}}\\
  	\caption{GDELT Average Tone over time and Moving Average}
  	\label{fig:avg_tone_diff}
  \end{figure}
@@ -26,8 +26,8 @@ The Goldstein scale and average tone values were aggregated across the dates, an
  
  \begin{figure}[H]
  	\centering
- 	\subfloat[GDELT Goldstein Scale]{  \includegraphics[width=0.45\textwidth]{images/goldsteinscore.png}\label{fig:gs}}
- 	\subfloat[GDELT Goldstein Scale 3 Day Moving Average]{  \includegraphics[width=0.45\textwidth]{images/goldsteinscore_ma.png}\label{fig:gs_ma}}\\
+ 	\subfloat[GDELT Goldstein Scale]{  \includegraphics[width=0.49\textwidth]{images/goldsteinscore.png}\label{fig:gs}}
+ 	\subfloat[GDELT Goldstein Scale 3 Day Moving Average]{  \includegraphics[width=0.49\textwidth]{images/goldsteinscore_ma.png}\label{fig:gs_ma}}\\
  	\caption{GDELT Goldstein Scale over time and Moving Average}
  	\label{fig:gs_diff}
  \end{figure}
@@ -40,8 +40,8 @@ Figure \ref{fig:dow_diff} shows the Dow difference between open and close prices
 
 \begin{figure}[H]
 	\centering
-	\subfloat[Dow Jones Daily Difference]{  \includegraphics[width=0.45\textwidth]{images/dow_diff.png}\label{fig:diff}}
-	\subfloat[Dow Jone Moving Average]{  \includegraphics[width=0.45\textwidth]{images/dow_diff_ma.png}\label{fig:dow_diff_ma}}\\
+	\subfloat[Dow Jones Daily Difference]{  \includegraphics[width=0.49\textwidth]{images/dow_diff.png}\label{fig:diff}}
+	\subfloat[Dow Jone Moving Average]{  \includegraphics[width=0.49\textwidth]{images/dow_diff_ma.png}\label{fig:dow_diff_ma}}\\
 	\caption{Dow Jones Daily Difference and Daily Difference Moving Average}
 	\label{fig:dow_diff}
 \end{figure}
@@ -61,13 +61,14 @@ All of topic models worked on the basis of using a corpus for the data, This mea
 The TFIDF vectoriser present in the sklearn package was used to calculate the vector encodings, and was used as the basis of the cluster analysis for k means clustering. It was run across the USA/China filtered data to get an initial understanding of which terms would be most important across the dataset. This was then used to numerically transform the headlines for the K Means algorithm. 
 
 \subsubsection{LDA}
-To run the LDA model, the gensim package in the python programming language was used. Several LDA models were fitted, each with a different number of topics, to examine which would be the best number of topics for the data. After the data was fitted, several phrases were inserted in the LDA model to see the probability of those words being in that topic or not. 
+To run the LDA model, the gensim package in the python programming language was used \cite{rehurek_lrec}. Several LDA models were fitted, each with a different number of topics, to examine which would be the best number of topics for the data. After the data was fitted, several phrases were inserted in the LDA model to see the probability of those words being in that topic or not. 
 
 It was found that LDA models were only able to return a probability value for words which were already in the corpus. This meant that if there was a news headline related to the topics in the topic model but it contained a word not present in the corpus, it would mean that the topic model would not be able to say whether that news headline was part of that topic or not. This meant that this type of model could not be used to separate and filter irrelevant headlines from those headlines which were focused on the headlines in the model. 
 
 \subsubsection{K Means}
 K means clustering was also fitted on the data. The package used was the K Means clustering algorithm already implemented in the sklearn python package. Several cluster numbers were tried, from fitting with 2 centroids to fitting with 4 centroids. The Mahalanobis distance and the euclidean distance was calculated for each clusters' points. Furthermore, sample phrases were tested against k means models, to see if the cluster was meaningfully able to recognise the difference between words related to the clusters and noise in the algorithms. From an implementation perspective, a random seed was set for each of the clusters so the centres would start at the same point, and thus the results would be reproducible. 
 
+To test the efficacy of the models with regards to filtering data, the Mahalanobis distance was calculated for each of the clusters for a selection of phrases. These phrases were varied in length and content. Some of the phrases were relevant to the main topics/content of the topic models, namely related to the pandemic, or the USA or China. Other phrases were completely unrelated to the topic models. If the cluster models were accurate in filtering information, the phrases closer to the topics at hand would be physically closer to the clusters in p-dimensional space and thus have smaller Mahalanobis distances than phrases which weren't close to the topics in hand.  
 
 \subsection{Stock Modelling}
 The main aim for this type of modelling was to predict whether the stock shifted up or down over the course of a day. Each day's difference was calculated between the opening and closing prices, and either a 1 or a 0 was used to represent the stock market going up and down. For the scope of the project, and similar to other modelling approaches, it was decided to only predict either the market going up or down. There were several models which were tried, detailed in \ref{models}. In all cases the response variable being predicted is the change in the stock price over a day. This takes a value of 1/0 for either a fall or rise. This is denoted Y at time t ($Y_{t}$), where t is a day, and ordered 1 to T, for the time interval used for training the model (April 1st to May 31st 2020). The predictors used were the Average Tone and Goldstein scale values for each day, along with differing amounts of predictors for previous day's data.
@@ -89,8 +90,10 @@ To test whether the previous N days' stock shift affected a specific day, three 
 
 All of these models were trained and tested on the March April data, and the results are reported in chapter \ref{results}.
 
-To test the model's predictive capacity in `real` time, the model was used to build a simple portfolio. For time reasons this only consisted of a single stock, where shares were bought or sold on a daily basis based on the model's confidence in the following day's stock shift. This was to mimic the behaviour of being used in real time, where there would only be new news for the current day, and based on the previous news and each day's news, the next day's prediction would be made. The stock chosen was Apple Inc. as this stock had the highest weighting in the Dow Jones index. 
+To both show how this sort of predictive model would be used in the real world, and to test the `best` model's predictive capacity in `real` time, the `best` model was used to build a simple portfolio. For time reasons this only consisted of a single stock, where shares were bought or sold on a daily basis based on the model's confidence in the following day's stock shift. This was to mimic the behaviour of being used in real time, where there would only be new news for the current day, and based on the previous news and each day's news, the next day's prediction would be made. The stock chosen was Apple Inc. as this stock had the highest weighting in the Dow Jones index. The Apple historical data values were also procured from the finance Yahoo United Kingdom website. 
 
 This was a very simple portfolio test, where each day's prediction triggered buying and selling of the stocks, i.e. stock was only ever held when the confidence of market shift was not above a threshold, otherwise stock would be bought and sold daily. There were several hyperparameters involved, namely these were the initial capital, initial number of shares, the confidence threshold required to trigger buying or selling stocks. There were also two additional hyperparameters, these variables controlled the fraction of capital used to buy stock, or the buy-factor, and the fraction of stock to sell at any given point, sell-factor. These variables were constant for every run, so for one test on the May to June, every time the confidence in the prediction for the next day was greater than the confidence threshold, and the market was predicted to increase, the buy-factor amount of the capital at that point was used to `purchase` stock. The reverse happened when the market was projected to decrease, with the sell-factor fraction of the stock being held being sold. Since geopolitical events can occur after the market close which are factored in by the predictive model, the stock close price was used as the reference price for buying and selling stock. 
+
+For the May to June time period, the number of shares, and the capital was tracked, along with the total asset value, which was the total capital plus the monetary value of those shares at the closing price each day.
 
 The `best` predictive model's portfolio was also compared to a portfolio which used the reference model, and the results are shown in chapter \ref{results}.
