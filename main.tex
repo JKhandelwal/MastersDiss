@@ -1,0 +1,113 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{filecontents}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[title]{appendix}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{epsfig}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{bashful}
+\usepackage{array}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[title]{appendix}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5em}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\begin{document}
+\title{Using NLP and Geopolitical Events Presented in the Global Database for Events, Language, and Tone to Perform Predictive Modelling on Stock Market Data}
+\author{Jalaj Khandelwal\\Student ID: 160001602}
+\date{}
+%\setcounter{secnumdepth}{-2}
+ \thispagestyle{empty}
+	
+	\begin{titlepage}
+		\vspace{\fill}
+		\maketitle
+		 \thispagestyle{empty}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.4\textwidth]{Images/SchoolLogo.png}
+		\end{figure}
+		\begin{center}
+			\Large\textbf{University of St Andrews}\\
+			\vspace{1cm}
+			\Large\textbf{School of Mathematics and Statistics}
+		\end{center}
+		
+		\vspace{\fill}
+		\Large%\textbf{Details}
+		\begin{itemize}
+			\renewcommand\labelitemi{--}
+			\item[] \textbf{Supervisor}: Dr Carl Donovan  
+			\item[] \textbf{Module}: MT5099 Masters Dissertation in Partial Fulfillment of the MSc.\ in Data Intensive Analysis
+			\item[] \textbf{Date}: \today
+		\end{itemize}
+		\vspace{\fill}
+	\end{titlepage}
+
+
+
+%\setcounter{secnumdepth}{-1}
+\section*{Declaration}
+\addcontentsline{toc}{section}{Declaration}
+I hereby certify that this dissertation, which is approximately 14,500 words in length, has been composed by me, that it is the record of work carried out by me and that it has not been submitted in any previous application for a degree. This project was conducted by me at University of St Andrews from June 2020 to August 2020 towards fulfilment of the requirements of the University of St Andrews for the degree of MSc. in Data Intensive Analysis under the supervision of Dr Carl Donovan.
+
+17th August 2020
+
+Jalaj Khandelwal
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+This Masters Dissertation was focused on trying to use geopolitical events to predict changes in the stock market. This aim was to first use the Global Database for Language and Tone (GDELT) to build topic models, which organise the geopolitical news into topics which could be used as a filter for the daily news cycle. Then, using the Tone and Geopolitical conflict scores provided by GDELT, models would be made made to predict changes in the stock market. There were two main topic modelling approaches, firstly using Latent Dirichlet Allocation, and secondly using K-Means clustering with TF-IDF. Both of these approaches either were incapable, or struggled to filter unseen news effectively, which means that they would not be effective in picking up new topics. However, many different stock predictive models were tried, and it was found that the accuracy of models using information provided by GDELT was higher in predicting binary stock shift, compared to a model which just only used the previous day's stock shift as a predictor. The best of the models also were able to demonstrate adding value to a simple portfolio, which suggests that using GDELT is a viable metric by which to predict the stock market. 
+\section*{Impact of COVID-19}
+The impacts of COVID-19 was minimal on this dissertation. The only issue was the amount of data used being restricted due to the machine constraints. Without Covid-19 data covering a longer time period from GDELT would have been used.
+\newpage
+\tableofcontents
+\listoftables
+\newpage
+\listoffigures
+
+
+\include{Introduction}
+\include{Prior}
+\include{gdelt}
+\include{Topic}
+\include{Scope}
+\include{Modelling}
+\include{Results}
+\include{Discussion}
+\include{Conclusions}
+\include{Appendix}
+\bibliographystyle{acm}
+\bibliography{ref}
+\end{document}
