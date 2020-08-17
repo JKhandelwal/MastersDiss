@@ -45,17 +45,8 @@
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \begin{document}
-\title{	Using NLP and Predictive Modelling on the Stock Market with the Global Database for Events Language and Tone
-
-
-Using Geopolitical Events in the Global Database for Events Language and Tone with NLP and Predictive Modelling on Stock Market Data
-
-Using NLP Geopolitical events in the Global Database for Events Language and Tone and Predictive Modelling 
-
-Using Global Database of Events, Language, and Tone with to Cluster Geopolitical Events 
-
-}
-\author{}
+\title{Using NLP and Geopolitical Events Presented in the Global Database for Events, Language, and Tone to Perform Predictive Modelling on Stock Market Data}
+\author{Jalaj Khandelwal\\Student ID: 160001602}
 \date{}
 %\setcounter{secnumdepth}{-2}
  \thispagestyle{empty}
@@ -90,14 +81,14 @@ Using Global Database of Events, Language, and Tone with to Cluster Geopolitical
 %\setcounter{secnumdepth}{-1}
 \section*{Declaration}
 \addcontentsline{toc}{section}{Declaration}
-I hereby certify that this dissertation, which is approximately 14000 words in length, has been composed by me, that it is the record of work carried out by me and that it has not been submitted in any previous application for a degree. This project was conducted by me at University of St Andrews from June 2020 to August 2020 towards fulfilment of the requirements of the University of St Andrews for the degree of MSc. in Data Intensive Analysis under the supervision of Dr Carl Donovan.
+I hereby certify that this dissertation, which is approximately 14,500 words in length, has been composed by me, that it is the record of work carried out by me and that it has not been submitted in any previous application for a degree. This project was conducted by me at University of St Andrews from June 2020 to August 2020 towards fulfilment of the requirements of the University of St Andrews for the degree of MSc. in Data Intensive Analysis under the supervision of Dr Carl Donovan.
 
 17th August 2020
 
 Jalaj Khandelwal
 \section*{Abstract}
 \addcontentsline{toc}{section}{Abstract}
-This Masters Dissertation was focused on trying to use geopolitical events to predict changes in the stock market. This aim was to first use the Global Database for Language and Tone (GDELT) to build topic models, which organise the geopolitical news into topics which could be used as a filter for the daily news cycle. Then, using the Tone and Geopolitical conflict scores provided by GDELT, models would be made made to predict changes in the stock market. There were two main topic modelling approaches, firstly using Latent Dirichlet Allocation, and secondly using K-Means clustering with TF-IDF. Both of these approaches either were incapable, or struggled to filter unseen news effectively, which means that they would not be effective in picking up new topics. However, many different stock predictive models were tried, and it was found that the accuracy of models using the GDELT information was higher in predicting the direction the stock market would go, compared to a model which just used previous stock direction values. The best of the models also were able to demonstrate adding value to a simple portfolio, which suggests that using GDELT is a viable metric by which to predict the stock market. 
+This Masters Dissertation was focused on trying to use geopolitical events to predict changes in the stock market. This aim was to first use the Global Database for Language and Tone (GDELT) to build topic models, which organise the geopolitical news into topics which could be used as a filter for the daily news cycle. Then, using the Tone and Geopolitical conflict scores provided by GDELT, models would be made made to predict changes in the stock market. There were two main topic modelling approaches, firstly using Latent Dirichlet Allocation, and secondly using K-Means clustering with TF-IDF. Both of these approaches either were incapable, or struggled to filter unseen news effectively, which means that they would not be effective in picking up new topics. However, many different stock predictive models were tried, and it was found that the accuracy of models using information provided by GDELT was higher in predicting binary stock shift, compared to a model which just only used the previous day's stock shift as a predictor. The best of the models also were able to demonstrate adding value to a simple portfolio, which suggests that using GDELT is a viable metric by which to predict the stock market. 
 \section*{Impact of COVID-19}
 The impacts of COVID-19 was minimal on this dissertation. The only issue was the amount of data used being restricted due to the machine constraints. Without Covid-19 data covering a longer time period from GDELT would have been used.
 \newpage
